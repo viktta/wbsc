@@ -4,9 +4,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import viewsets
-from .models import CustomUser
+from .models import CustomUser, Url
 
-from .serializers import MyTokenObtainPairSerializer, CustomUserSerializer
+
+from .serializers import MyTokenObtainPairSerializer, CustomUserSerializer, CustomUrlSerializer
 
 
 class ObtainTokenPairWithColorView(TokenObtainPairView):
@@ -46,3 +47,7 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
+class UrlsView(viewsets.ModelViewSet):
+    queryset = Url.objects.all()
+    serializer_class = CustomUrlSerializer

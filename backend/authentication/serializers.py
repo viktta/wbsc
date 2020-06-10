@@ -1,6 +1,6 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
-from .models import CustomUser
+from .models import CustomUser, Url
 # ...
 
 
@@ -38,3 +38,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class CustomUrlSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Url
+        fields = ('__all__')
+        
