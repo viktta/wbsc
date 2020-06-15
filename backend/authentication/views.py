@@ -51,3 +51,4 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
 class UrlsView(viewsets.ModelViewSet):
     queryset = Url.objects.all()
     serializer_class = CustomUrlSerializer
+    

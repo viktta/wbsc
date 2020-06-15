@@ -8,6 +8,6 @@ urlpatterns = [
     path('token/obtain/', ObtainTokenPairWithColorView.as_view(), name='token_create'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('blacklist/', LogoutAndBlacklistRefreshTokenForUserView.as_view(), name='blacklist'),
-    path('urls/', UrlsView, name="urls_view"),
+    path('urls/', UrlsView.as_view(), name="urls_view"),
     path('hello/', HelloWorldView.as_view(), name='hello_world')
 ]
