@@ -21,7 +21,7 @@ class UrlsView(APIView):
    def post(self, request):
         serializer = CustomUrlSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save(urls=request.user)
+        serializer.save(user_url=request.user)
         return Response(status=status.HTTP_201_CREATED)
 
 

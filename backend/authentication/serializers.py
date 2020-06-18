@@ -7,7 +7,8 @@ class CustomUrlSerializer(serializers.ModelSerializer):
     user = User.objects.all()
     class Meta:
         model = Url
-        fields = ('urls','users',)
+        fields = ('urls','user_url')
+        extra_kwargs = {'user_url': {'read_only': True}}
    
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
