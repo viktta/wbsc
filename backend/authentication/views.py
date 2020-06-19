@@ -5,8 +5,10 @@ from rest_framework import viewsets
 from .models import Url
 from .models import User as UserModel
 from rest_framework.authentication import BasicAuthentication
+from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .serializers import CustomUrlSerializer, CustomUserSerializer
+
+from .serializers import CustomUrlSerializer, CustomUserSerializer, MyTokenObtainPairSerializer
 
 
 
@@ -37,3 +39,11 @@ class User(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ObtainTokenPairWithColorView(TokenObtainPairView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = MyTokenObtainPairSerializer
+
+class ObtainTokenPairWithColorView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
