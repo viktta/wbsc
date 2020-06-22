@@ -1,15 +1,19 @@
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
-from .models import Url, User
+from .models import CustomUser,Url
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
-class CustomUrlSerializer(serializers.ModelSerializer):
-    user = User.objects.all()
-    class Meta:
-        model = Url
-        fields = ('urls','user_url')
-        extra_kwargs = {'user_url': {'read_only': True}}
-   
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+
+    @classmethod
+    def get_token(cls, user):
+        token = super(MyTokenObtainPairSerializer, cls).get_token(user)
+
+        # Add custom claims
+        token['fav_color'] = user.fav_color
+        return token
 
 class CustomUserSerializer(serializers.ModelSerializer):
     """
@@ -22,7 +26,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(min_length=8, write_only=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('email', 'username', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
@@ -34,12 +38,9 @@ class CustomUserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-
-    @classmethod
-    def get_token(cls, user):
-        token = super(MyTokenObtainPairSerializer, cls).get_token(user)
-
-        # Add custom claims
-        token['fav_color'] = user.fav_color
-        return token
+class CustomUrlSerializer(serializers.ModelSerializer):
+    user = CustomUser.objects.all()
+    class Meta:
+        model = Url
+        fields = ('urls','user_url')
+        extra_kwargs = {'user_url': {'read_only': True}}

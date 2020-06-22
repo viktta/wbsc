@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import User
+from django.urls import path, include
 
-class CustomUserAdmin(admin.ModelAdmin):
-    model = User
-
-
-admin.site.register(User, CustomUserAdmin)
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('authentication.urls'))
+]
