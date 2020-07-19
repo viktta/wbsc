@@ -5,6 +5,9 @@ import axiosInstance from './axiosApi';
 import Login from './User/Login';
 import LinkSaver from './Link_saver';
 import './styles/main.css';
+import { Provider } from 'react-redux';
+import store from '../Store/store.js'
+
 
 class App extends Component {
     async handleLogout() {
@@ -25,6 +28,7 @@ class App extends Component {
 
     render() {
         return (
+            <Provider store={store}>
             <Router>
                 <div>
                     <nav className="Nav-Links">
@@ -41,6 +45,7 @@ class App extends Component {
                     </main>
                 </div>
             </Router>
+            </Provider>
         );
     }
 }

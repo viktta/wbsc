@@ -2,7 +2,8 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Url,CustomUser
-from .serializers import  CustomUserSerializer, CustomUrlSerializer
+from .serializers import  CustomUserSerializer, CustomUrlSerializer, RetrieveUserInfo
+from rest_framework import viewsets
 
 
 class CustomUserCreate(APIView):
@@ -20,6 +21,21 @@ class CustomUserCreate(APIView):
                 return Response(json, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+class UserViewSet(viewsets.ViewSet):
+
+    lookup_field = 'username'
+
+    def list(self, request):
+        queryset = CustomUser.objects.all()
+        serializer = RetrieveUserInfo(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, username=None):
+        queryset = CustomUser.objects.all()
+        user = get_object_or_404(queryset, username=username)
+        serializer = RetrieveUserInfo(user)
+        return Response(serializer.data)
 
 class UrlsView(APIView):
    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

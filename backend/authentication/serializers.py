@@ -23,6 +23,16 @@ class CustomUserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+class RetrieveUserInfo(serializers.ModelSerializer):
+    email = serializers.EmailField(
+        required = True
+    )
+    username = serializers.CharField()
+    password = serializers.CharField(min_length=8)
+    class Meta:
+        model = CustomUser
+        fields = ('email', 'username', 'password')
+
 class CustomUrlSerializer(serializers.ModelSerializer):
     user = CustomUser.objects.all()
     class Meta:

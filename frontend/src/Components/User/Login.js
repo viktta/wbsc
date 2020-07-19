@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axiosInstance from '../axiosApi';
-
+import { connect } from 'react-redux';
+import { postUserInfo } from '../../Actions/actionCreator';
 
 class Login extends Component {
     constructor(props) {
@@ -18,14 +19,7 @@ class Login extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        axiosInstance.get('/user/', {
-            username: this.state.username,
-            password: this.state.password
-        }).then(res => {
-            console.log(res)
-            console.log(res.body)
-        })
+        
     }
 
     render() {
@@ -41,4 +35,12 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+    user : this.state.user
+});
+
+const mapDispatchToProps = {
+    postUserInfo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

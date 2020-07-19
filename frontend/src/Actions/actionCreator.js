@@ -16,7 +16,7 @@ export function requestPostUserInfo(username, email, password) {
 export function postUserInfo(username, email, password) {
     return function (dispatch) {
         dispatch(requestPostUserInfo(username, email, password))
-        return axios.post('http://127.0.0.1:8000/api/user/create/', {
+        return axios.get('http://127.0.0.1:8000/api/user/' + username), {
             username,
             email,
             password
