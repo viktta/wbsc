@@ -1,28 +1,12 @@
 import React, { Component } from 'react';
 import Register from './User/Register';
 import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import axiosInstance from './axiosApi';
 import Login from './User/Login';
 import LinkSaver from './Link_saver';
 import './styles/main.css';
 
 
 class App extends Component {
-    async handleLogout() {
-        try {
-            const response = await axiosInstance.post('/blacklist/', {
-                "refresh_token": localStorage.getItem("refresh_token")
-            });
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-            axiosInstance.defaults.headers['Authorization'] = null;
-            return response;
-        }
-        catch (e) {
-            console.log(e);
-        }
-    };
-
 
     render() {
         return (
