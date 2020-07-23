@@ -13,7 +13,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'username', 'password')
+        fields = ('email', 'username', 'password','id')
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -31,9 +31,16 @@ class RetrieveUserInfo(serializers.ModelSerializer):
     password = serializers.CharField(min_length=8)
     class Meta:
         model = CustomUser
-        fields = ('email', 'username', 'password')
+        fields = ('email', 'username', 'password','id')
 
 class CustomUrlSerializer(serializers.ModelSerializer):
+    user = CustomUser.objects.all()
+    class Meta:
+        model = Url
+        fields = ('urls','user_url')
+        extra_kwargs = {'user_url': {'read_only': True}}
+
+class CustomUrlSerializerRetrieve(serializers.ModelSerializer):
     user = CustomUser.objects.all()
     class Meta:
         model = Url

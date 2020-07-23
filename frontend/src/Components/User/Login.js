@@ -21,8 +21,16 @@ handleSubmit(e) {
     const username = this.state.username
     axios.get('http://127.0.0.1:8000/api/user/' + username)
     .then(res => {
-        console.log(res)
-        console.log(res.body)
+        localStorage.setItem('username', res.data.username)
+        localStorage.setItem('email', res.data.email)
+        localStorage.setItem('password', res.data.password)
+        localStorage.setItem('id', res.data.id)
+    })
+}
+
+componentDidMount() {
+    this.setState({
+        username: localStorage.getItem('username')
     })
 }
 
@@ -34,6 +42,7 @@ handleSubmit(e) {
                     {/*<input value={this.state.password} name="password" onChange={this.handleChange} placeholder="enter password" type="password"></input>*/}
                     <button type="submit">Log In</button>
                 </form>
+                <p>username: {this.state.username}</p>
             </div>
         );
     }

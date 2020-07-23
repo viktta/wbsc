@@ -16,13 +16,9 @@ class Register extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    handleSubmit(event) {
+    handleSubmit(e) {
         const { username, email, password } = this.state;
         axios.post('http://127.0.0.1:8000/api/user/', { username, email, password })
-            .then(res => {
-                console.log(res)
-                console.log(res.data)
-            })
     }
 
     render() {

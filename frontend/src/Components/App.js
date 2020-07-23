@@ -8,6 +8,19 @@ import './styles/main.css';
 
 class App extends Component {
 
+constructor(props) {
+    super(props);
+    this.state = {
+        username: ''
+    }
+}
+
+componentDidMount() {
+    this.setState({
+        username: localStorage.getItem('username')
+    })
+}
+
     render() {
         return (
             <Router>
@@ -16,6 +29,7 @@ class App extends Component {
                         <Link className={"nav-link-home"} to={"/"}>Home</Link>
                         <Link className={"nav-link-signup"} to={"/signup/"}>Signup</Link>
                         <Link className={"nav-link-login"} to={"/login/"}>Login</Link>
+                        <h1>username: {this.state.username}</h1>
                     </nav>
                     <main>
                         <Switch>
