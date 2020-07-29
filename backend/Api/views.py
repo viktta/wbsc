@@ -44,4 +44,17 @@ class UrlRetrieveView(viewsets.ModelViewSet):
         serializer = UrlSerializer(user, many=True)
         return Response(serializer.data)
     
+
+class UserRetrieveView(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = UserSerializer
     
+    def get_queryset(self):
+        user = User.objects.all()
+        return user
+    
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        user = User.objects.filter(id=params['pk'])
+        serializer = UserSerializer(user, many=True)
+        return Response(serializer.data)
