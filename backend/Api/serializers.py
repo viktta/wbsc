@@ -10,4 +10,4 @@ class UrlSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Urls
-        fields = ['url', 'user']
+        fields = ['url', 'user', 'id']

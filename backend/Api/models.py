@@ -1,6 +1,7 @@
 from django.db import models
 
 class User(models.Model):
+    USERNAME_FIELD = 'email'
     first_name = models.CharField(max_length=40, blank=False)
     last_name = models.CharField(max_length=40, blank=False)
     email = models.EmailField(blank=False)
@@ -15,4 +16,4 @@ class User(models.Model):
 
 class Urls(models.Model):
     url = models.TextField(blank=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, related_name='user')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
