@@ -7,7 +7,7 @@ class LinkSaver extends Component {
     this.state = {
       url: "",
       user: localStorage.getItem("id"),
-      urls: localStorage.getItem("url"),
+      urls: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,8 +17,7 @@ class LinkSaver extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
     const { url, user } = this.state;
     axios.post("http://127.0.0.1:8000/api/urls/", {
       url,
@@ -29,12 +28,18 @@ class LinkSaver extends Component {
   componentDidMount() {
     const user = this.state.user;
     axios.get("http://127.0.0.1:8000/api/urls/" + user).then((res) => {
-      localStorage.setItem("url", JSON.stringify(res.data));
+      this.setState({
+        urls: res.data
+      })
     });
   }
 
+
   render() {
     const urls = this.state.urls;
+    const urlsMap = urls.map((url) => {
+    return <a href=''><li>{url.url}</li></a>
+    })
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -47,7 +52,7 @@ class LinkSaver extends Component {
           <button type="submit">add</button>
         </form>
         <ul>
-          <li>{urls}</li>
+          {urlsMap}
         </ul>
       </div>
     );
