@@ -29,17 +29,20 @@ class LinkSaver extends Component {
     const user = this.state.user;
     axios.get("http://127.0.0.1:8000/api/urls/" + user).then((res) => {
       this.setState({
-        urls: res.data
-      })
+        urls: res.data,
+      });
     });
   }
-
 
   render() {
     const urls = this.state.urls;
     const urlsMap = urls.map((url) => {
-    return <a href=''><li>{url.url}</li></a>
-    })
+      return (
+        <a href="">
+          <li>{url.url}</li>
+        </a>
+      );
+    });
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -51,9 +54,7 @@ class LinkSaver extends Component {
           ></input>
           <button type="submit">add</button>
         </form>
-        <ul>
-          {urlsMap}
-        </ul>
+        <ul>{urlsMap}</ul>
       </div>
     );
   }

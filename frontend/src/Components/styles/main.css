@@ -1,5 +1,52 @@
 .Nav-Links {
-    margin: 10px;
-    padding: 10px;
-    background-color: rgba(8, 0, 93, 0.452);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.nav-link-home {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left;
+}
+
+.nav-link-signup {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left;
+}
+
+.nav-link-username {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+li Link:hover:not(.active) {
+  background-color: #111;
+}
+
+.logoutbutton {
+  position: absolute;
+  float: left;
+  top: 12px;
+}
+
+.user-form {
+  text-align: center;
+  position: absolute;
+  left: 670px;
+  top: 200px;
+}
+
+.active {
+  background-color: #4caf50;
 }
