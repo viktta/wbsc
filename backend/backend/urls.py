@@ -6,5 +6,3 @@ urlpatterns = [
     path('api/', include('Api.urls'))
 ]
 
-
-# safgedsgdsgdsgdsg
