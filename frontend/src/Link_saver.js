@@ -38,19 +38,13 @@ class LinkSaver extends Component {
 
   render() {
     const urls = this.state.urls;
-    urls.forEach(function (item) {
-      const table = document.getElementById("table");
-
-      const type = document.createElement("tbody");
-      type.textContent = item.name;
-
-      const link = document.createElement("a");
-      link.textContent = item.url;
-      link.href = item.url;
-
-      table.appendChild(type);
-      table.appendChild(link);
-      
+    const url2 = urls.map(function (items) {
+      return (
+        <tr>
+          <a href={items.url}>{items.name}</a>
+          <br />
+        </tr>
+      );
     });
     return (
       <div>
@@ -70,9 +64,7 @@ class LinkSaver extends Component {
           <button type="submit">add</button>
         </form>
         <div></div>
-        <table id="table">
-          
-        </table>
+        <table id="table">{url2}</table>
       </div>
     );
   }
