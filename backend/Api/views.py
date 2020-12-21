@@ -60,3 +60,20 @@ class UserRetrieveView(viewsets.ModelViewSet):
         user = User.objects.filter(id=params['pk'])
         serializer = UserSerializer(user, many=True)
         return Response(serializer.data)
+
+
+class urlEditDelete(generics.RetrieveUpdateDestroyAPIView, viewsets.ModelViewSet):
+    queryset = Urls.objects.all()
+    serializer_class = UrlSerializer
+
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        urls = Urls.objects.all()
+        return urls
+
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        user = Urls.objects.filter(id=params['pk'])
+        serializer = UrlSerializer(user, many=True)
+        return Response(serializer.data)

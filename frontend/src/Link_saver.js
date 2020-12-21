@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 class LinkSaver extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      url1: "",
+      url: "",
       name: "",
       user: localStorage.getItem("id"),
       urls: [],
@@ -40,10 +40,21 @@ class LinkSaver extends Component {
     const urls = this.state.urls;
     const url2 = urls.map(function (items) {
       return (
-        <tr>
-          <a href={items.url}>{items.name}</a>
-          <br />
-        </tr>
+        <thead key={items.id}>
+          <tr>
+            <th>
+              <a href={items.url}>{items.name}</a>
+            </th>
+            <th>
+              <button>
+                <Link to={"/edit/"}>rename</Link>
+              </button>
+            </th>
+            <th>
+              <button>delete</button>
+            </th>
+          </tr>
+        </thead>
       );
     });
     return (

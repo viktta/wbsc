@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class User(models.Model):
     username = models.CharField(max_length=20, blank=False)
     first_name = models.CharField(max_length=40, blank=False)
@@ -15,6 +16,6 @@ class User(models.Model):
 
 
 class Urls(models.Model):
-    url = models.TextField(blank=False)
-    name = models.CharField(blank=False, max_length=191)
+    url = models.TextField(blank=True)
+    name = models.CharField(blank=True, max_length=191)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
