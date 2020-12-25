@@ -51,7 +51,9 @@ class LinkSaver extends Component {
               </button>
             </th>
             <th>
-              <button>delete</button>
+              <button>
+                <Link to={"/delete/"}>delete</Link>
+              </button>
             </th>
           </tr>
         </thead>

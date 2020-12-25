@@ -12,7 +12,6 @@ class Edit extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.renameUrl = this.renameUrl.bind(this);
-    this.deleteUrl = this.deleteUrl.bind(this);
   }
 
   handleChange = (e) => {
@@ -27,14 +26,6 @@ class Edit extends Component {
       url,
       name,
       user,
-    });
-  }
-
-  deleteUrl(e) {
-    const user = this.state.user;
-    const url1 = this.state.url1;
-    axios.delete(`http://localhost:8000/api/urls/edit/${user}`, {
-      url1,
     });
   }
 
