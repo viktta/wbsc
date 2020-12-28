@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import './styles/main.css';
 class LinkSaver extends Component {
   constructor(props) {
     super(props);
     this.state = {
       url: "",
       name: "",
-      user: localStorage.getItem("id"),
+      user: localStorage.getItem("user_id"),
       urls: [],
     };
     this.handleChange = this.handleChange.bind(this);
@@ -43,16 +44,16 @@ class LinkSaver extends Component {
         <thead key={items.id}>
           <tr>
             <th>
-              <a href={items.url}>{items.name}</a>
+              <a href={items.url} className='url1' >{items.name}</a>
             </th>
             <th>
               <button>
-                <Link to={"/edit/"}>rename</Link>
+                <Link to={"/edit/"} className='url-rename'>rename</Link>
               </button>
             </th>
             <th>
               <button>
-                <Link to={"/delete/"}>delete</Link>
+                <Link to={"/delete/"} className='url-delete' >delete</Link>
               </button>
             </th>
           </tr>
@@ -67,17 +68,19 @@ class LinkSaver extends Component {
             value={this.state.url}
             onChange={this.handleChange}
             placeholder="add url"
+            className='url-adder'
           ></input>
           <input
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
-            placeholder="add name"
+            placeholder="add url name"
+            className='url-name'
           ></input>
-          <button type="submit">add</button>
+          <button type="submit" className='url-button-add' >add</button>
         </form>
         <div></div>
-        <table id="table">{url2}</table>
+        <table id="table" className='url-list'>{url2}</table>
       </div>
     );
   }

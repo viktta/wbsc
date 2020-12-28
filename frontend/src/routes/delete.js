@@ -6,7 +6,7 @@ class Delete extends Component {
     this.state = {
       url: "",
       name: "",
-      user: localStorage.getItem("id"),
+      user: localStorage.getItem("user_id"),
       urls: [],
       id: "",
     };
@@ -39,31 +39,30 @@ class Delete extends Component {
     const urls = this.state.urls;
     const url = urls.map(function (items) {
       return (
-        <li key={items.id}>
+        <li key={items.id} className='delete-lists'>
           name: {items.name} <br /> url: {items.url} <br /> id: {items.id}
         </li>
       );
     });
     return (
       <div>
+        <p className='delete-p'>Here you can delete urls</p>
         <form onSubmit={this.deleteUrl}>
           <input
             name="id"
             value={this.state.id}
             onChange={this.handleChange}
             placeholder="id of url"
+            className='delete-id'
           ></input>
-          <br />
-          <br />
           <input
             name="url"
             value={this.state.url}
             onChange={this.handleChange}
             placeholder="url name"
+            className='delete-url'
           ></input>
-          <br />
-          <br />
-          <button type="submit">delete</button>
+          <button type="submit" className='delete-button'>delete</button>
         </form>
         <ul>{url}</ul>
       </div>

@@ -7,7 +7,7 @@ class Edit extends Component {
       url: "",
       name: "",
       id: "",
-      user: localStorage.getItem("id"),
+      user: localStorage.getItem("user_id"),
       urls: [],
     };
     this.handleChange = this.handleChange.bind(this);
@@ -42,41 +42,46 @@ class Edit extends Component {
     const urls = this.state.urls;
     const url1 = urls.map(function (items) {
       return (
-        <li key={items.id}>
-          name: {items.name} <br /> url: {items.url} <br /> id: {items.id}
+        <li key={items.id} className="url-lists">
+          name: {items.name}
+          <br />
+          url: {items.url}
+          <br /> id: {items.id}
         </li>
       );
     });
     return (
       <div>
-        <form onSubmit={this.renameUrl}>
+        <p className="edit-p">
+          Here you can edit the name <br /> of the url and the url itself
+        </p>
+        <form onSubmit={this.renameUrl} className="edit">
           <input
             name="id"
             value={this.state.id}
             onChange={this.handleChange}
             placeholder="id of the site"
+            className="edit-id"
           ></input>
-          <br />
-          <br />
           <input
             name="url"
             value={this.state.url}
             onChange={this.handleChange}
             placeholder="rename url"
+            className="edit-url"
           ></input>
-          <br />
-          <br />
           <input
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
             placeholder="change name"
+            className="edit-name"
           ></input>
-          <br />
-          <br />
-          <button type="submit">rename</button>
+          <button className="edit-rename" type="submit">
+            rename
+          </button>
         </form>
-        <ul>{url1}</ul>
+        <ul className="user-urls">{url1}</ul>
       </div>
     );
   }
