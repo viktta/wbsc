@@ -51,7 +51,7 @@ class Edit extends Component {
       );
     });
     return (
-      <div>
+      <div className='edit-grid'>
         <p className="edit-p">
           Here you can edit the name <br /> of the url and the url itself
         </p>

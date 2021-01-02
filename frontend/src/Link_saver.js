@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import './styles/main.css';
+import "./styles/main.css";
 class LinkSaver extends Component {
   constructor(props) {
     super(props);
@@ -19,13 +19,20 @@ class LinkSaver extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     const { url, user, name } = this.state;
-    axios.post("http://127.0.0.1:8000/api/urls/", {
-      url,
-      name,
-      user,
-    });
+    axios
+      .post("http://127.0.0.1:8000/api/urls/", {
+        url,
+        name,
+        user,
+      })
+      .then(() => {
+        window.setTimeout(() => {
+          window.history.go(0);
+        }, 1000);
+      });
   }
 
   componentDidMount() {
@@ -44,16 +51,22 @@ class LinkSaver extends Component {
         <thead key={items.id}>
           <tr>
             <th>
-              <a href={items.url} className='url1' >{items.name}</a>
+              <a href={items.url} className="url1">
+                {items.name}
+              </a>
             </th>
             <th>
               <button>
-                <Link to={"/edit/"} className='url-rename'>rename</Link>
+                <Link to={"/edit/"} className="url-rename">
+                  rename
+                </Link>
               </button>
             </th>
             <th>
               <button>
-                <Link to={"/delete/"} className='url-delete' >delete</Link>
+                <Link to={"/delete/"} className="url-delete">
+                  delete
+                </Link>
               </button>
             </th>
           </tr>
@@ -61,26 +74,29 @@ class LinkSaver extends Component {
       );
     });
     return (
-      <div>
+      <div className="link-saver-grid">
         <form onSubmit={this.handleSubmit}>
           <input
             name="url"
             value={this.state.url}
             onChange={this.handleChange}
             placeholder="add url"
-            className='url-adder'
+            className="url-adder"
           ></input>
           <input
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
             placeholder="add url name"
-            className='url-name'
+            className="url-name"
           ></input>
-          <button type="submit" className='url-button-add' >add</button>
+          <button type="submit" className="url-button-add">
+            add
+          </button>
         </form>
-        <div></div>
-        <table id="table" className='url-list'>{url2}</table>
+        <table id="table" className="url-list">
+          {url2}
+        </table>
       </div>
     );
   }

@@ -45,9 +45,9 @@ class Delete extends Component {
       );
     });
     return (
-      <div>
+      <div className='delete-grid'>
         <p className='delete-p'>Here you can delete urls</p>
-        <form onSubmit={this.deleteUrl}>
+        <form onSubmit={this.deleteUrl} className='delete-inputs'>
           <input
             name="id"
             value={this.state.id}

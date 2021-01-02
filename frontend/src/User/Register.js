@@ -17,19 +17,12 @@ class Register extends Component {
   };
 
   handleSubmit(e) {
-    e.preventDefault();
     const { username, email, password } = this.state;
     axios
       .post("http://127.0.0.1:8000/api/users/", {
         username,
         email,
         password,
-      })
-      .then((res) => {
-        localStorage.setItem("id", res.data.id);
-        localStorage.setItem("username", res.data.username);
-        localStorage.setItem("email", res.data.email);
-        localStorage.setItem("password", res.data.password);
       })
       .then(() => {
         window.setTimeout(() => {
@@ -40,7 +33,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div className='Register'>
         <h1 className='register-form'>Register</h1>
         <form onSubmit={this.handleSubmit} className="user-form">
           <input

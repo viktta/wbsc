@@ -117,10 +117,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className='login-grid'>
         <h1 className='Login-user' >Login</h1>
         <form onSubmit={this.handleSubmit} className="login-form">
-          <label>
             <input
               name="username"
               type="text"
@@ -129,8 +128,6 @@ class Login extends Component {
               placeholder="Enter Username"
               className='login-username'
             />
-          </label>
-          <label>
             <input
               name="password"
               type="password"
@@ -139,7 +136,6 @@ class Login extends Component {
               placeholder="Enter Password"
               className='login-password'
             />
-          </label>
           <input type="submit" value="Submit" className='login-submit' />
         </form>
       </div>

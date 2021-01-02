@@ -20,7 +20,7 @@ class App extends Component {
   componentDidMount() {
     this.setState({
       username: localStorage.getItem("username"),
-    });
+    })
   }
 
   async handleLogout() {
@@ -137,7 +137,7 @@ class Home extends Component {
           make you are saving a <br />
           full link (e.p https://youtube.com)
         </p>
-        <LinkSaver />
+        <LinkSaver className='link-saver-grid-home'/>
       </div>
     );
   }

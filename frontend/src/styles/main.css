@@ -1,7 +1,17 @@
-.html,body {
+.html,
+body {
   background-color: rgba(236, 236, 236, 0.42);
-  overflow-x: hidden;
   max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.home-class-div {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
 }
 
 .Nav-Links {
@@ -19,6 +29,12 @@
   float: right;
   background: linear-gradient(#262626, #9d3434);
   border-radius: 10px;
+}
+
+.user-form {
+  display: grid;
+  grid-row: 2;
+  grid-column: 3;
 }
 
 .nav-link-signup {
@@ -67,68 +83,81 @@ li Link:hover:not(.active) {
 }
 
 .home-h1 {
-  position: relative;
-  left: 800px;
+  display: grid;
+  grid-column-start: 3;
+  grid-column-end: 3;
   color: rgba(0, 0, 0, 0.801);
 }
 
 .home-p {
-  position: relative;
-  left: 850px;
-  font-size: 20px;
+  display: grid;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 3;
   color: rgba(0, 0, 0, 0.801);
 }
 
 .url-adder {
   position: relative;
-  left: 670px;
+  top: 60px;
+  display: grid;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 3;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 50px;
   text-align: center;
-  margin: 10px;
 }
 
 .url-name {
   position: relative;
-  left: 680px;
+  top: 80px;
+  display: grid;
+  grid-row-start: 5;
+  grid-row-end: 5;
+  grid-column-start: 3;
+  grid-column-end: 3;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 50px;
   text-align: center;
-  margin: 10px;
 }
 
 .url-button-add {
   position: relative;
-  left: 690px;
+  top: 100px;
+  display: grid;
+  grid-row: 6;
+  grid-column: 3;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 50px;
   text-align: center;
-  margin: 10px;
+  cursor: pointer;
 }
 
 .url-list {
+  display: grid;
   position: relative;
-  left: 800px;
+  top: 130px;
+  right: 10px;
+  grid-row: 7;
+  grid-column: 3;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 80px;
   text-align: center;
-  margin: 10px;
 }
 
 .url-rename {
@@ -175,242 +204,266 @@ li Link:hover:not(.active) {
   color: rgb(173, 50, 173);
 }
 .home-p1 {
-  position: relative;
-  left: 850px;
-  font-size: 20px;
+  display: grid;
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 3;
   color: rgba(0, 0, 0, 0.801);
 }
 
 .edit-p {
   position: relative;
-  left: 900px;
-  font-size: 20px;
+  display: grid;
+  grid-row: 1;
+  grid-column: 3;
   color: rgba(0, 0, 0, 0.801);
-  top: 100px;
 }
 
 .delete-p {
   position: relative;
-  left: 850px;
-  font-size: 20px;
+  display: grid;
+  grid-row: 1;
+  grid-column: 2;
   color: rgba(0, 0, 0, 0.801);
-  top: 160px;
 }
 
 .delete-id {
   position: relative;
-  left: 670px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
-  margin: 10px;
 }
 
 .delete-url {
   position: relative;
-  left: 680px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
-  margin: 10px;
 }
 
 .delete-button {
   position: relative;
-  left: 690px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
-  margin: 10px;
 }
 
 .edit-id {
   position: relative;
-  left: 670px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
   margin: 10px;
 }
 
 .edit-url {
   position: relative;
-  left: 680px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
   margin: 10px;
 }
 
 .edit-name {
   position: relative;
-  left: 690px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
   margin: 10px;
 }
 
 .edit-rename {
   position: relative;
-  left: 700px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
   margin: 10px;
 }
 
 .url-lists {
   position: relative;
-  left: 860px;
   border-radius: 10px;
-  top: 300px;
-  margin: 10px;
   list-style-type: none;
   color: rgba(255, 5, 5, 0.774);
 }
 
-
 .delete-lists {
   position: relative;
-  left: 800px;
   border-radius: 10px;
-  top: 250px;
-  margin: 10px;
   list-style-type: none;
   color: rgba(255, 5, 5, 0.774);
+  display: grid;
+  grid-row: 3;
+  grid-column: 2;
 }
 
 .input-username {
   position: relative;
-  left: 670px;
+  margin: 5px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
-  margin: 10px;
 }
 
 .input-email {
   position: relative;
-  left: 680px;
+  margin: 5px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
-  margin: 10px;
 }
 
 .input-password {
   position: relative;
-  left: 690px;
+  margin: 5px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
-  margin: 10px;
 }
 
 .button-sign-up {
   position: relative;
-  left: 700px;
+  margin: 5px;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
-  margin: 10px;
+  cursor: pointer;
+}
+
+.Register {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
 }
 
 .register-form {
-  position: relative;
-  left: 90px;
-  top: 150px;
+  display: grid;
+  grid-row: 1;
+  grid-column: 3;
   text-align: center;
   margin: 10px;
 }
 
 .login-username {
   position: relative;
-  left: 670px;
+  display: grid;
+  grid-row: 2;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
-  top: 200px;
   text-align: center;
   margin: 10px;
 }
 
 .login-password {
   position: relative;
-  left: 680px;
+  display: grid;
+  grid-row: 4;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
   margin: 10px;
 }
 
 .login-submit {
   position: relative;
-  left: 700px;
+  display: grid;
+  grid-row: 5;
   border-radius: 10px;
   border-bottom-color: #9d3434;
   border-left-color: #9d3434;
   border-right-color: #9d3434;
   border-top-color: #262626;
-  top: 200px;
   text-align: center;
   margin: 10px;
 }
 
 .Login-user {
   position: relative;
-  left: 7 0px;
-  top: 150px;
+  display: grid;
+  grid-row: 1;
+  grid-column: 3;
   text-align: center;
   margin: 10px;
 }
 
+.login-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
+}
+
+.login-form {
+  display: grid;
+  grid-row: 2;
+  grid-column: 3;
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
+}
+
+.edit {
+  display: grid;
+  grid-column: 3;
+  grid-row: 3;
+  position: relative;
+  margin: 10px;
+}
+
+.user-urls {
+  display: grid;
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.delete-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
+}
+
+.delete-inputs {
+  display: grid;
+  grid-row: 1;
+  grid-column: 3;
+}
